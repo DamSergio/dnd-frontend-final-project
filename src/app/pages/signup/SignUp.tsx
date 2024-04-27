@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -17,7 +17,7 @@ const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
 
 const SignUp = () => {
-  const [formState, setFormState] = React.useState<SignUpUser>(initialState);
+  const [formState, setFormState] = useState<SignUpUser>(initialState);
   const { loading, fetchError, signUp } = useSignUp();
   const navigate = useNavigate();
 
