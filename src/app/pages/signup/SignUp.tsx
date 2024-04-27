@@ -2,16 +2,11 @@ import React from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+
 import useSignUp from "../../hooks/useSignUp";
+import { SignUpUser } from "../../../types/User";
 
-type SignUpState = {
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
-
-const initialState: SignUpState = {
+const initialState: SignUpUser = {
   username: "",
   email: "",
   password: "",
@@ -22,32 +17,32 @@ const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
 
 const SignUp = () => {
-  const [state, setState] = React.useState<SignUpState>(initialState);
+  const [formState, setFormState] = React.useState<SignUpUser>(initialState);
   const { loading, fetchError, signUp } = useSignUp();
   const navigate = useNavigate();
 
   const validateForm = () => {
     if (
-      !state.username ||
-      !state.email ||
-      !state.password ||
-      !state.confirmPassword
+      !formState.username ||
+      !formState.email ||
+      !formState.password ||
+      !formState.confirmPassword
     ) {
       toast.error("Por favor, rellena todos los campos");
       return false;
     }
 
-    if (state.password !== state.confirmPassword) {
+    if (formState.password !== formState.confirmPassword) {
       toast.error("Las contraseñas no coinciden");
       return false;
     }
 
-    if (!emailRegex.test(state.email)) {
+    if (!emailRegex.test(formState.email)) {
       toast.error("Email inválido");
       return false;
     }
 
-    if (!passwordRegex.test(state.password)) {
+    if (!passwordRegex.test(formState.password)) {
       toast.error(
         "La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula y un número"
       );
@@ -62,13 +57,13 @@ const SignUp = () => {
 
     const isValid = validateForm();
     if (!isValid) {
-      setState((prev) => ({ ...prev, password: "", confirmPassword: "" }));
+      setFormState((prev) => ({ ...prev, password: "", confirmPassword: "" }));
       return;
     }
 
-    await signUp(state);
+    await signUp(formState);
     if (fetchError) {
-      setState((prev) => ({
+      setFormState((prev) => ({
         ...prev,
         username: "",
         password: "",
@@ -78,8 +73,8 @@ const SignUp = () => {
     }
 
     toast.success("Usuario registrado");
-    navigate("/signup/email-sent", { state: { email: state.email } });
-    setState(initialState);
+    navigate("/signup/email-sent", { state: { email: formState.email } });
+    setFormState(initialState);
   };
 
   return (
@@ -97,9 +92,9 @@ const SignUp = () => {
             type="text"
             placeholder="Nombre de usuario"
             className="w-full input input-bordered h-10"
-            value={state.username}
+            value={formState.username}
             onChange={(e) =>
-              setState((prev) => ({ ...prev, username: e.target.value }))
+              setFormState((prev) => ({ ...prev, username: e.target.value }))
             }
           />
 
@@ -110,9 +105,9 @@ const SignUp = () => {
             type="text"
             placeholder="Email"
             className="w-full input input-bordered h-10"
-            value={state.email}
+            value={formState.email}
             onChange={(e) =>
-              setState((prev) => ({ ...prev, email: e.target.value }))
+              setFormState((prev) => ({ ...prev, email: e.target.value }))
             }
           />
 
@@ -123,9 +118,9 @@ const SignUp = () => {
             type="password"
             placeholder="Contraseña"
             className="w-full input input-bordered h-10"
-            value={state.password}
+            value={formState.password}
             onChange={(e) =>
-              setState((prev) => ({ ...prev, password: e.target.value }))
+              setFormState((prev) => ({ ...prev, password: e.target.value }))
             }
           />
 
@@ -136,9 +131,12 @@ const SignUp = () => {
             type="password"
             placeholder="Contraseña"
             className="w-full input input-bordered h-10"
-            value={state.confirmPassword}
+            value={formState.confirmPassword}
             onChange={(e) =>
-              setState((prev) => ({ ...prev, confirmPassword: e.target.value }))
+              setFormState((prev) => ({
+                ...prev,
+                confirmPassword: e.target.value,
+              }))
             }
           />
 
