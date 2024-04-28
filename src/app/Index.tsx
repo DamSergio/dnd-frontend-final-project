@@ -8,6 +8,7 @@ import EmailSent from "./pages/signup/EmailSent";
 import EmailVerified from "./pages/signup/EmailVerified";
 import Login from "./pages/login/Login";
 import { useAuthContext } from "../contexts/AuthContext";
+import Home from "./pages/home/Home";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { authUser } = useAuthContext();
@@ -17,7 +18,7 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
 
 const App = () => {
   return (
-    <div className="p-4 h-screen flex items-center justify-center">
+    <div className="h-screen">
       <Routes>
         {/* Auth routes */}
         <Route path="/login" element={<Login />} />
@@ -30,7 +31,7 @@ const App = () => {
           path="/"
           element={
             <ProtectedRoute>
-              <span>Home</span>
+              <Home />
             </ProtectedRoute>
           }
         />
