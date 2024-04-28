@@ -2,24 +2,14 @@ import React from "react";
 
 import axios from "../../utils/axios";
 import { AxiosError } from "axios";
-
-type SignUpInputs = {
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
-
-type SignUpError = {
-  error: string;
-  message: string;
-};
+import { SignUpUser } from "../../types/User";
+import { FetchError } from "../../types/FetchError";
 
 const useSignUp = () => {
   const [loading, setLoading] = React.useState(false);
-  const [fetchError, setFetchError] = React.useState<string | null>(null);
 
-  const signUp = async (user: SignUpInputs) => {
+  const signUp = async (user: SignUpUser) => {
+    let fetchError: string | null = null;
     setLoading(true);
 
     try {
@@ -29,31 +19,19 @@ const useSignUp = () => {
         password: user.password,
         confirm_password: user.confirmPassword,
       });
-      const response_data = response.data;
-      console.log(response_data);
-    } catch (error: AxiosError | unknown) {
-      const error_message: SignUpError | unknown = (error as AxiosError)
-        .response?.data;
-      setFetchError((error_message as SignUpError).message);
+      const data = response.data;
+      console.log(data);
+    } catch (error) {
+      const error_message = ((error as AxiosError).response?.data as FetchError)
+        .message;
+      fetchError = error_message;
     }
 
     setLoading(false);
+    return fetchError;
   };
 
-  return { loading, fetchError, signUp };
+  return { loading, signUp };
 };
 
 export default useSignUp;
-
-// await fetch("http://127.0.0.1:5000/auth/register", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           username: user.username,
-//           email: user.email,
-//           password: user.password,
-//           confirm_password: user.confirmPassword,
-//         }),
-//       });

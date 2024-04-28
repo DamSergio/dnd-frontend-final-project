@@ -18,7 +18,7 @@ const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
 
 const SignUp = () => {
   const [formState, setFormState] = useState<SignUpUser>(initialState);
-  const { loading, fetchError, signUp } = useSignUp();
+  const { loading, signUp } = useSignUp();
   const navigate = useNavigate();
 
   const validateForm = () => {
@@ -61,7 +61,7 @@ const SignUp = () => {
       return;
     }
 
-    await signUp(formState);
+    const fetchError = await signUp(formState);
     if (fetchError) {
       setFormState((prev) => ({
         ...prev,
