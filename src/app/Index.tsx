@@ -18,8 +18,10 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   return token ? (
     <div className="w-full min-h-screen flex flex-col items-center justify-between">
       <Header />
-      <main>{children}</main>
-      <Footer />
+      <main className="w-full flex-1 flex flex-col justify-center p-4 z-0">
+        {children}
+      </main>
+      {/* <Footer /> */}
     </div>
   ) : (
     <Navigate to="/login" />
