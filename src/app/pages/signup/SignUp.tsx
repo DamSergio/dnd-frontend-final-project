@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 
 import useSignUp from "../../hooks/useSignUp";
 import { SignUpUser } from "../../../types/User";
+import AuthContainer from "../../components/containers/AuthContainer";
 
 const initialState: SignUpUser = {
   username: "",
@@ -78,89 +79,85 @@ const SignUp = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
-        <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10">
-          <h1 className="text-3xl font-semibold text-center text-gray-300">
-            Resgristro<span className="text-blue-500"> DnD</span>
-          </h1>
+    <AuthContainer>
+      <h1 className="text-3xl font-semibold text-center text-gray-300">
+        Resgristro<span className="text-blue-500"> DnD</span>
+      </h1>
 
-          <form onSubmit={handleSubmit}>
-            <label className="label p-2">
-              <span className="text-base label-text">Nombre de usuario</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Nombre de usuario"
-              className="w-full input input-bordered h-10"
-              value={formState.username}
-              onChange={(e) =>
-                setFormState((prev) => ({ ...prev, username: e.target.value }))
-              }
-            />
+      <form onSubmit={handleSubmit}>
+        <label className="label p-2">
+          <span className="text-base label-text">Nombre de usuario</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Nombre de usuario"
+          className="w-full input input-bordered h-10"
+          value={formState.username}
+          onChange={(e) =>
+            setFormState((prev) => ({ ...prev, username: e.target.value }))
+          }
+        />
 
-            <label className="label p-2">
-              <span className="text-base label-text">Email</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Email"
-              className="w-full input input-bordered h-10"
-              value={formState.email}
-              onChange={(e) =>
-                setFormState((prev) => ({ ...prev, email: e.target.value }))
-              }
-            />
+        <label className="label p-2">
+          <span className="text-base label-text">Email</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Email"
+          className="w-full input input-bordered h-10"
+          value={formState.email}
+          onChange={(e) =>
+            setFormState((prev) => ({ ...prev, email: e.target.value }))
+          }
+        />
 
-            <label className="label p-2">
-              <span className="text-base label-text">Contraseña</span>
-            </label>
-            <input
-              type="password"
-              placeholder="Contraseña"
-              className="w-full input input-bordered h-10"
-              value={formState.password}
-              onChange={(e) =>
-                setFormState((prev) => ({ ...prev, password: e.target.value }))
-              }
-            />
+        <label className="label p-2">
+          <span className="text-base label-text">Contraseña</span>
+        </label>
+        <input
+          type="password"
+          placeholder="Contraseña"
+          className="w-full input input-bordered h-10"
+          value={formState.password}
+          onChange={(e) =>
+            setFormState((prev) => ({ ...prev, password: e.target.value }))
+          }
+        />
 
-            <label className="label p-2">
-              <span className="text-base label-text">Confirmar contraseña</span>
-            </label>
-            <input
-              type="password"
-              placeholder="Contraseña"
-              className="w-full input input-bordered h-10"
-              value={formState.confirmPassword}
-              onChange={(e) =>
-                setFormState((prev) => ({
-                  ...prev,
-                  confirmPassword: e.target.value,
-                }))
-              }
-            />
+        <label className="label p-2">
+          <span className="text-base label-text">Confirmar contraseña</span>
+        </label>
+        <input
+          type="password"
+          placeholder="Contraseña"
+          className="w-full input input-bordered h-10"
+          value={formState.confirmPassword}
+          onChange={(e) =>
+            setFormState((prev) => ({
+              ...prev,
+              confirmPassword: e.target.value,
+            }))
+          }
+        />
 
-            <Link
-              to="/login"
-              className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block"
-            >
-              ¿Ya tienes una cuenta?
-            </Link>
+        <Link
+          to="/login"
+          className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block"
+        >
+          ¿Ya tienes una cuenta?
+        </Link>
 
-            <div>
-              <button className="btn btn-block btn-sm mt-2 border border-slate-700">
-                {loading ? (
-                  <span className="loading loading-spinner" />
-                ) : (
-                  "Resgistrarse"
-                )}
-              </button>
-            </div>
-          </form>
+        <div>
+          <button className="btn btn-block btn-sm mt-2 border border-slate-700">
+            {loading ? (
+              <span className="loading loading-spinner" />
+            ) : (
+              "Resgistrarse"
+            )}
+          </button>
         </div>
-      </div>
-    </div>
+      </form>
+    </AuthContainer>
   );
 };
 

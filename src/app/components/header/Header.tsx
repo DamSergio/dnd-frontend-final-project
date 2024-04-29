@@ -3,6 +3,14 @@ import { DrawerIcon } from "../icons/Icons";
 import AvatarDropDown from "./AvatarDropDown";
 
 const Header = () => {
+  const headerLinks = [
+    <Link to={"/charcters"} key={1} className="font-bold">
+      Personajes
+    </Link>,
+    <Link to={"/campaigns"} key={2} className="font-bold">
+      Campañas
+    </Link>,
+  ];
   return (
     <header className="drawer static top-0">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -27,19 +35,16 @@ const Header = () => {
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal">
                 {/* Navbar menu content here */}
-                <li>
-                  <a>Navbar Item 1</a>
-                </li>
-                <li>
-                  <a>Navbar Item 2</a>
-                </li>
+                {headerLinks.map((link) => (
+                  <li key={link.key}>{link}</li>
+                ))}
               </ul>
             </div>
           </div>
           <AvatarDropDown />
         </div>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-10">
         <label
           htmlFor="my-drawer-3"
           aria-label="close sidebar"
@@ -47,12 +52,9 @@ const Header = () => {
         ></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200">
           {/* Sidebar content here */}
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
+          {headerLinks.map((link) => (
+            <li key={link.key}>{link}</li>
+          ))}
         </ul>
       </div>
     </header>
