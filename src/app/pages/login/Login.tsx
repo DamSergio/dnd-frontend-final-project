@@ -16,8 +16,25 @@ const Login = () => {
   const { loading, login } = useLogin();
   const navigate = useNavigate();
 
+  const validateForm = () => {
+    if (!formState.email) {
+      toast.error("El email es requerido");
+      return false;
+    }
+
+    if (!formState.password) {
+      toast.error("La contraseña es requerida");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const isValid = validateForm();
+    if (!isValid) return;
 
     const fetchError = await login(formState);
 

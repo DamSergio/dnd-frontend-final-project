@@ -15,7 +15,7 @@ const useVerifyEmail = () => {
     setLoading(true);
 
     try {
-      const response = await axios.get(`/auth/verify/${token}`);
+      await axios.get(`/auth/verify/${token}`);
     } catch (error: AxiosError | unknown) {
       const error_message: FetchError | unknown = (error as AxiosError).response
         ?.data;

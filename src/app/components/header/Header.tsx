@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../../../contexts/AuthContext";
+import { DrawerIcon } from "../icons/Icons";
+import AvatarDropDown from "./AvatarDropDown";
 
 const Header = () => {
-  const { authUser } = useAuthContext();
-
   return (
-    <div className="drawer">
+    <header className="drawer static top-0">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
@@ -16,19 +15,7 @@ const Header = () => {
               aria-label="open sidebar"
               className="btn btn-square btn-ghost"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-6 h-6 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
+              <DrawerIcon />
             </label>
           </div>
           <div className="navbar-start flex-1 px-2 mx-2 w-auto">
@@ -49,36 +36,7 @@ const Header = () => {
               </ul>
             </div>
           </div>
-          <div className="navbar-end w-auto">
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src={authUser.profilePicture}
-                  />
-                </div>
-              </div>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <a>Profile</a>
-                </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a>Logout</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <AvatarDropDown />
         </div>
       </div>
       <div className="drawer-side">
@@ -97,7 +55,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-    </div>
+    </header>
   );
 };
 

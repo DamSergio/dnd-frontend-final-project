@@ -9,22 +9,66 @@ import EmailVerified from "./pages/signup/EmailVerified";
 import Login from "./pages/login/Login";
 import { useAuthContext } from "../contexts/AuthContext";
 import Home from "./pages/home/Home";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
-  const { authUser } = useAuthContext();
+  const { token } = useAuthContext();
 
-  return authUser ? children : <Navigate to="/login" />;
+  return token ? (
+    <div className="w-full min-h-screen flex flex-col items-center justify-between">
+      <Header />
+      <main>{children}</main>
+      <Footer />
+    </div>
+  ) : (
+    <Navigate to="/login" />
+  );
+};
+
+const UnProtectedRoute = ({ children }: { children: ReactNode }) => {
+  const { token } = useAuthContext();
+
+  return token ? <Navigate to="/" /> : children;
 };
 
 const App = () => {
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <Routes>
         {/* Auth routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signup/email-sent" element={<EmailSent />} />
-        <Route path="/signup/verify/:token" element={<EmailVerified />} />
+        <Route
+          path="/login"
+          element={
+            <UnProtectedRoute>
+              <Login />
+            </UnProtectedRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <UnProtectedRoute>
+              <SignUp />
+            </UnProtectedRoute>
+          }
+        />
+        <Route
+          path="/signup/email-sent"
+          element={
+            <UnProtectedRoute>
+              <EmailSent />
+            </UnProtectedRoute>
+          }
+        />
+        <Route
+          path="/signup/verify/:token"
+          element={
+            <UnProtectedRoute>
+              <EmailVerified />
+            </UnProtectedRoute>
+          }
+        />
 
         {/* App routes */}
         <Route
