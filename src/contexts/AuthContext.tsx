@@ -28,22 +28,16 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [authUser, setAuthUser] = useState(
     JSON.parse(localStorage.getItem("authUser") as string) || null
   );
-  const [user, setUser] = useState<AuthUser>({} as AuthUser);
-
-  useEffect(() => {
-    if (authUser) setUser(authUser);
-    else setUser({} as AuthUser);
-  }, [authUser]);
 
   return (
     <AuthContext.Provider
       value={{
-        username: user.username,
-        email: user.email,
-        profilePicture: user.profilePicture,
-        characters: user.characters,
-        rol: user.rol,
-        token: user.token,
+        username: authUser.username,
+        email: authUser.email,
+        profilePicture: authUser.profilePicture,
+        characters: authUser.characters,
+        rol: authUser.rol,
+        token: authUser.token,
         setAuthUser,
       }}
     >

@@ -11,6 +11,7 @@ import { useAuthContext } from "../contexts/AuthContext";
 import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import Characters from "./pages/characters/Characters";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { token } = useAuthContext();
@@ -78,6 +79,15 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/characters"
+          element={
+            <ProtectedRoute>
+              <Characters />
             </ProtectedRoute>
           }
         />

@@ -1,16 +1,30 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { DrawerIcon } from "../icons/Icons";
 import AvatarDropDown from "./AvatarDropDown";
 
 const Header = () => {
+  const location = useLocation();
   const headerLinks = [
-    <Link to={"/charcters"} key={1} className="font-bold">
+    <Link
+      to={"/characters"}
+      key={1}
+      className={`font-bold ${
+        location.pathname === "/characters" ? "text-blue-500" : ""
+      }`}
+    >
       Personajes
     </Link>,
-    <Link to={"/campaigns"} key={2} className="font-bold">
+    <Link
+      to={"/campaigns"}
+      key={2}
+      className={`font-bold ${
+        location.pathname === "/campaigns" ? "text-blue-500" : ""
+      }`}
+    >
       Campañas
     </Link>,
   ];
+
   return (
     <header className="drawer static top-0">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
