@@ -1,0 +1,120 @@
+{
+  "backgrounds": [
+    {
+      "name": "Acolito",
+      "description": "Servir en un templo, realizar rituales, sacrificios, eras un sacerdote… ¿Clérigo?",
+      "benefits": "Perspicacia, Religión, dos idiomas a elegir, equipo de sacerdote, rasgo Refugio del Fiel.",
+      "icon": "/icons/backgrounds/acolyte.png"
+    },
+    {
+      "name": "Animador",
+      "description": "El público le da la vida, lo mejor será estar delante de él… ¿Bardo?",
+      "benefits": "Acrobacias, Interpretación, útiles para el disfraz, algún instrumento, equipo para animar al público, rasgo Por Petición Popular.",
+      "icon": "/icons/backgrounds/entertainer.png"
+    },
+    {
+      "name": "Artesano Gremial",
+      "description": "Pertenecer a un gremio, deberá elegir a cual… ¿Brujo?",
+      "benefits": "Perspicacia, Persuasión, Herramientas de artesano, un idioma a elegir, Equipo de artesano, rasgo Miembro de un gremio.",
+      "icon": "/icons/backgrounds/guild-artisan.png"
+    },
+    {
+      "name": "Charlatán",
+      "description": "Los demás harán lo que uno quiere explicando su necesidad… ¿Pícaro?",
+      "benefits": "Engaño, juego de manos, útiles para el disfraz y falsificar, Equipo para crear el engaño. rasgo Identidad Falsa.",
+      "icon": "/icons/backgrounds/charlatan.png"
+    },
+    {
+      "name": "Criminal",
+      "description": "Experto en criminalidad, asesinar, violencia y sentirse al margen de la ley. ¿Hechicero?",
+      "benefits": "Engaño, sigilo, Herramientas de ladrón, útiles para el ladrón. rasgo Contacto Criminal.",
+      "icon": "/icons/backgrounds/criminal.png"
+    },
+    {
+      "name": "Ermitaño",
+      "description": "Aislado de la gente, aprendiendo de la soledad… ¿Druida?",
+      "benefits": "Medicina, Religión, útiles de herboristería, un idioma a elegir, pergaminos con su aprendizaje, rasgo Descubrimiento.",
+      "icon": "/icons/backgrounds/hermit.png"
+    },
+    {
+      "name": "Erudito",
+      "description": "Estudioso sobre el multiverso D&D… ¿Mago?",
+      "benefits": "Conocimiento Arcano, Historia, dos idiomas a elegir, equipo de un escribiente, rasgo Investigador.",
+      "icon": "/icons/backgrounds/sage.png"
+    },
+    {
+      "name": "Héroe del Pueblo",
+      "description": "Desde lo más profundo de la sociedad se abre camino el héroe… ¿Bárbaro?",
+      "benefits": "Supervivencia, trato con animales, herramientas de artesano, equipo de artesano, rasgo Hospitalidad rural",
+      "icon": "/icons/backgrounds/folk-hero.png"
+    },
+    {
+      "name": "Huérfano",
+      "description": "Desde pequeño la soledad ha sido la compañera inevitable… ¿Monje?",
+      "benefits": "Juego de manos, sigilo, herramientas para el disfraz, equipo de ladronzuelo, rasgo Secretos de la ciudad.",
+      "icon": "/icons/backgrounds/urchin.png"
+    },
+    {
+      "name": "Marinero",
+      "description": "Viajero naval durante muchos años… ¿explorador?",
+      "benefits": "Atletismo, percepción, herramienta de navegante, equipo de navegante, rasgo Pasaje en un barco.",
+      "icon": "/icons/backgrounds/sailor.png"
+    },
+    {
+      "name": "Noble",
+      "description": "Descendiente de la nobleza y casa de alta alcurnia… ¿Paladín?",
+      "benefits": "Historia, persuasión, herramientas a elegir, un idioma a elegir, equipo de ropa de calidad.",
+      "icon": "/icons/backgrounds/noble.png"
+    },
+    {
+      "name": "Salvaje",
+      "description": "Superviviente en el bosque solitario… ¿explorador?",
+      "benefits": "Atletismo, supervivencia, un instrumento, un idioma a elegir, equipo de caza, rasgo Vagabundo.",
+      "icon": "/icons/backgrounds/outlander.png"
+    },
+    {
+      "name": "Soldado",
+      "description": "Perteneciente a un ejercito… ¿Guerrero?",
+      "benefits": "Atletismo, intimidación, competencia en juego y vehículos, equipo de soldado, rasgo Rango Militar.",
+      "icon": "/icons/backgrounds/soldier.png"
+    }
+  ],
+  "aligments": [
+    {
+      "name": "Legal Bueno",
+      "description": "Un buen carácter legal es un protector del honor y de la verdad. Pasa su vida castigando y denunciando a todas las injusticias que se cruza en su camino sin ningún tapujo o temor."
+    },
+    {
+      "name": "Neutral Bueno",
+      "description": "Un buen personaje neutral cree en el altruismo por encima de todo y siempre ayudará a los demás, aunque nunca sienta la necesidad ni la obligación de hacerlo."
+    },
+    {
+      "name": "Caótico Bueno",
+      "description": "Un buen personaje caótico cree en la libertad como la mayor virtud sin preocuparse de lo que puedan opinar de él los demás. Harán un balance y examinarán que es lo bueno y lo ejecutarán sin que esto sea precisamente bueno para la sociedad en general."
+    },
+    {
+      "name": "Legal Neutral",
+      "description": "Un carácter legítimo y neutral obedece a los principios y leyes creadas por el mismo o siguiendo un orden creado por un gobierno."
+    },
+    {
+      "name": "Neutral",
+      "description": "Un verdadero personaje neutral es neutral en ambos ejes, y no le importa ninguna postura de alineación. Esto a menudo describe a alguien que sólo se preocupa por sus propias necesidades personales, no inclinado a herir o dañar a otros, ni a obedecer o rebelarse."
+    },
+    {
+      "name": "Caótico Neutral",
+      "description": "Un caótico con carácter neutral sigue su corazón, pero sin la voluntad de autosacrificio como podría hacerlo un Caótico- Bueno."
+    },
+    {
+      "name": "Legal Malvado",
+      "description": "Un personaje con esta alineación es un tirano. No tienen reparos morales en castigar a los individuos por el gran objetivo de promover la sociedad, preocupado por la lealtad, la tradición y el orden. Un villano con este alineamiento es a menudo fácil de tratar, ya que generalmente puedes confiar en que mantendrán su palabra."
+    },
+    {
+      "name": "Neutral Malvado",
+      "description": "Este tipo de personajes lo podemos catalogar como egoísta, y no tiene problemas en dañar a otros para conseguir lo que quieren y te traicionará deliberadamente si con eso pueden salirse con la suya."
+    },
+    {
+      "name": "Caótico Malvado",
+      "description": "Un personaje malévolo, un villano empeñado en sembrar la destrucción. El odio y la codicia le obliga destruir, asesinar con el objetivo de crear más caos en su entorno."
+    }
+  ]
+}

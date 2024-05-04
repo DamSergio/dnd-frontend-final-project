@@ -50,7 +50,7 @@ const Login = () => {
   return (
     <AuthContainer>
       <h1 className="text-3xl font-semibold text-center text-gray-300">
-        Iniciar sesion<span className="text-blue-500"> DnD</span>
+        Iniciar sesion<span className="text-yellow-400"> DnD</span>
       </h1>
 
       <form onSubmit={handleSubmit}>
@@ -82,7 +82,7 @@ const Login = () => {
 
         <Link
           to="/signup"
-          className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block"
+          className="text-sm hover:underline hover:text-yellow-600 mt-2 inline-block"
         >
           ¿Todavia no tienes cuenta?
         </Link>

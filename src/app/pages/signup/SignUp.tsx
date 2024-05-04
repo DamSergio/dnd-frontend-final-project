@@ -81,7 +81,7 @@ const SignUp = () => {
   return (
     <AuthContainer>
       <h1 className="text-3xl font-semibold text-center text-gray-300">
-        Resgristro<span className="text-blue-500"> DnD</span>
+        Resgristro<span className="text-yellow-400"> DnD</span>
       </h1>
 
       <form onSubmit={handleSubmit}>
@@ -142,7 +142,7 @@ const SignUp = () => {
 
         <Link
           to="/login"
-          className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block"
+          className="text-sm hover:underline hover:text-yellow-600 mt-2 inline-block"
         >
           ¿Ya tienes una cuenta?
         </Link>

@@ -5,7 +5,13 @@ const AvatarDropDown = () => {
   const { profilePicture, username, setAuthUser } = useAuthContext();
 
   const handleLogout = () => {
-    setAuthUser(null);
+    setAuthUser({
+      username: "",
+      email: "",
+      profilePicture: "",
+      rol: "",
+      token: "",
+    });
     localStorage.removeItem("authUser");
   };
 

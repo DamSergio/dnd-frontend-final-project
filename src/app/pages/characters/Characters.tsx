@@ -2,9 +2,10 @@ import React from "react";
 import MainContainer from "../../components/containers/MainContainer";
 import { SearchIcon } from "../../components/icons/Icons";
 import { useAuthContext } from "../../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 const Characters = () => {
-  const { characters: charactersId } = useAuthContext();
+  const { token } = useAuthContext();
 
   return (
     <MainContainer>
@@ -28,7 +29,9 @@ const Characters = () => {
 
           <div className="divider" />
 
-          <button className="btn glass">Crear Personaje</button>
+          <Link to={"/createCharacter"} className="btn glass">
+            Crear Personaje
+          </Link>
         </div>
 
         <div className="divider divider-horizontal hidden md:flex" />

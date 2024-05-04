@@ -13,7 +13,6 @@ const AuthContext = createContext({
   username: "",
   email: "",
   profilePicture: "",
-  characters: [],
   rol: "",
   token: "",
   setAuthUser: (authUser: AuthUser | null) => {},
@@ -24,9 +23,17 @@ export const useAuthContext = () => {
   return useContext(AuthContext);
 };
 
+const ClearUser = {
+  username: "",
+  email: "",
+  profilePicture: "",
+  rol: "",
+  token: "",
+};
+
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [authUser, setAuthUser] = useState(
-    JSON.parse(localStorage.getItem("authUser") as string) || null
+    JSON.parse(localStorage.getItem("authUser") as string) || ClearUser
   );
 
   return (
@@ -35,7 +42,6 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         username: authUser.username,
         email: authUser.email,
         profilePicture: authUser.profilePicture,
-        characters: authUser.characters,
         rol: authUser.rol,
         token: authUser.token,
         setAuthUser,

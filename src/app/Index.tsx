@@ -12,6 +12,8 @@ import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Characters from "./pages/characters/Characters";
+import CreateCharacter from "./pages/createCharacter/CreateCharacter";
+import { FormStateContextProvider } from "./pages/createCharacter/FormContext";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { token } = useAuthContext();
@@ -88,6 +90,17 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Characters />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/createCharacter"
+          element={
+            <ProtectedRoute>
+              <FormStateContextProvider>
+                <CreateCharacter />
+              </FormStateContextProvider>
             </ProtectedRoute>
           }
         />
