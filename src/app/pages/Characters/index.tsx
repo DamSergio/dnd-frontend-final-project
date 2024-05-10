@@ -1,10 +1,10 @@
 import React from "react";
-import MainContainer from "../../components/containers/MainContainer";
-import { SearchIcon } from "../../components/icons/Icons";
+import MainContainer from "../../components/Containers/MainContainer";
+import { SearchIcon } from "../../components/Icons/Icons";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 
-const Characters = () => {
+export const Characters = () => {
   const { token } = useAuthContext();
 
   return (
@@ -43,5 +43,3 @@ const Characters = () => {
     </MainContainer>
   );
 };
-
-export default Characters;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Link, useLocation } from "react-router-dom";
-import AuthContainer from "../../components/containers/AuthContainer";
+import AuthContainer from "../../components/Containers/AuthContainer";
 
 const maskEmail = (email: string) => {
   if (!email) return "";
@@ -13,7 +13,7 @@ const maskEmail = (email: string) => {
   return `${maskedUsername}@${domain}`;
 };
 
-const EmailSent = () => {
+export const EmailSent = () => {
   const location = useLocation();
   const email = location.state?.email as string;
   const maskedEmail = maskEmail(email);
@@ -36,5 +36,3 @@ const EmailSent = () => {
     </AuthContainer>
   );
 };
-
-export default EmailSent;

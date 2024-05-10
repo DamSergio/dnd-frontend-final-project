@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { DrawerIcon } from "../icons/Icons";
+import { DrawerIcon } from "../Icons/Icons";
 import AvatarDropDown from "./AvatarDropDown";
 
 const Header = () => {

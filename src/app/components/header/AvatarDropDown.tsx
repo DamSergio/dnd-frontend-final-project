@@ -1,5 +1,5 @@
 import { useAuthContext } from "../../../contexts/AuthContext";
-import { LogoutIcon, ProfileIcon, SettingsIcon } from "../icons/Icons";
+import { LogoutIcon, ProfileIcon, SettingsIcon } from "../Icons/Icons";
 
 const AvatarDropDown = () => {
   const { profilePicture, username, setAuthUser } = useAuthContext();

@@ -2,9 +2,9 @@
 import { useParams } from "react-router-dom";
 import useVerifyEmail from "../../hooks/useVerifyEmail";
 import { useEffect } from "react";
-import AuthContainer from "../../components/containers/AuthContainer";
+import AuthContainer from "../../components/Containers/AuthContainer";
 
-const EmailVerified = () => {
+export const EmailVerified = () => {
   const { token } = useParams() as { token: string };
   const { loading, fetchError, verifyEmail } = useVerifyEmail();
 
@@ -27,5 +27,3 @@ const EmailVerified = () => {
     </AuthContainer>
   );
 };
-
-export default EmailVerified;

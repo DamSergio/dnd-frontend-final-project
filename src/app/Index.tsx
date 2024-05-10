@@ -3,17 +3,15 @@ import { ReactNode } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
-import SignUp from "./pages/signup/SignUp";
-import EmailSent from "./pages/signup/EmailSent";
-import EmailVerified from "./pages/signup/EmailVerified";
-import Login from "./pages/login/Login";
+import { SignUp } from "./pages/SignUp/Loadeable";
+import { EmailSent } from "./pages/EmailSent/Loadeable";
+import { EmailVerified } from "./pages/EmailVerified/Loadeable";
+import { Login } from "./pages/Login/Loadeable";
 import { useAuthContext } from "../contexts/AuthContext";
-import Home from "./pages/home/Home";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import Characters from "./pages/characters/Characters";
-import CreateCharacter from "./pages/createCharacter/CreateCharacter";
-import { FormStateContextProvider } from "./pages/createCharacter/FormContext";
+import { Home } from "./pages/Home/Loadeable";
+import Header from "./components/Header/Header";
+import { Characters } from "./pages/Characters/Loadeable";
+import { CreateCharacter } from "./pages/CreateCharacter/Loadeable";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { token } = useAuthContext();
@@ -98,9 +96,7 @@ const App = () => {
           path="/createCharacter"
           element={
             <ProtectedRoute>
-              <FormStateContextProvider>
-                <CreateCharacter />
-              </FormStateContextProvider>
+              <CreateCharacter />
             </ProtectedRoute>
           }
         />

@@ -1,7 +1,7 @@
 import { useAuthContext } from "../../../contexts/AuthContext";
-import MainContainer from "../../components/containers/MainContainer";
+import MainContainer from "../../components/Containers/MainContainer";
 
-const Home = () => {
+export const Home = () => {
   const { username } = useAuthContext();
 
   return (
@@ -13,5 +13,3 @@ const Home = () => {
     </MainContainer>
   );
 };
-
-export default Home;

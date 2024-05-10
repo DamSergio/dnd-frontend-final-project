@@ -19,7 +19,7 @@ const useSignUp = () => {
         password: user.password,
         confirm_password: user.confirmPassword,
       });
-      const data = response.data;
+      const data = await response.data;
       console.log(data);
     } catch (error) {
       const error_message = ((error as AxiosError).response?.data as FetchError)
