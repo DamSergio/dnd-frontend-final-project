@@ -1,5 +1,3 @@
-import React from "react";
-
 import diceLoaderImg from "../../assets/dice_loader.webp";
 
 const Loader = () => {

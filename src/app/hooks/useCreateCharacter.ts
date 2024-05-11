@@ -10,7 +10,7 @@ const useCreateCharacter = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<string | null>(null);
   const [fetchError, setFetchError] = useState<string | null>(null);
-  const { token } = useAuthContext();
+  const { accessToken } = useAuthContext();
 
   const createCharacter = async (character: Character) => {
     setLoading(true);
@@ -52,7 +52,7 @@ const useCreateCharacter = () => {
           items: character.items,
           languages: character.languages,
         },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${accessToken}` } }
       );
 
       const data = await response.data;

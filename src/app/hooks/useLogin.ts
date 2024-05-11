@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { LoginUser, AuthUser } from "../../types/User";
+import { LoginUser } from "../../types/User";
 import { FetchError } from "../../types/FetchError";
 import axios from "../../utils/axios";
 import { AxiosError } from "axios";
@@ -8,7 +8,7 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 const useLogin = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const { setAuthUser } = useAuthContext();
+  const { setAuthUser, setAuthMessage } = useAuthContext();
 
   const login = async (loginUser: LoginUser) => {
     let fetchError: string | null = null;
@@ -23,10 +23,12 @@ const useLogin = () => {
       const data = await response.data;
       setAuthUser(data.data);
       localStorage.setItem("authUser", JSON.stringify(data.data));
+      setAuthMessage("");
     } catch (error) {
       const error_message = ((error as AxiosError).response?.data as FetchError)
         .message;
       fetchError = error_message;
+      setAuthMessage(error_message);
     }
 
     setLoading(false);

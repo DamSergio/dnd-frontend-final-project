@@ -5,7 +5,7 @@ import { useAuthContext } from "../../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 
 export const Characters = () => {
-  const { token } = useAuthContext();
+  const { accessToken } = useAuthContext();
 
   return (
     <MainContainer>

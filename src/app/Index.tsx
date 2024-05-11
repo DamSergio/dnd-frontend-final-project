@@ -12,11 +12,13 @@ import { Home } from "./pages/Home/Loadeable";
 import Header from "./components/Header/Header";
 import { Characters } from "./pages/Characters/Loadeable";
 import { CreateCharacter } from "./pages/CreateCharacter/Loadeable";
+import useRefreshToken from "./hooks/useRefreshToken";
+import ToastSessionExpired from "./components/CustomToasts/ToastSessionExpired";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
-  const { token } = useAuthContext();
+  const { accessToken } = useAuthContext();
 
-  return token ? (
+  return accessToken ? (
     <div className="w-full min-h-screen flex flex-col items-center justify-between">
       <Header />
       <main className="w-full flex-1 flex flex-col justify-center p-4 z-0">
@@ -30,12 +32,14 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
 };
 
 const UnProtectedRoute = ({ children }: { children: ReactNode }) => {
-  const { token } = useAuthContext();
+  const { accessToken } = useAuthContext();
 
-  return token ? <Navigate to="/" /> : children;
+  return accessToken ? <Navigate to="/" /> : children;
 };
 
 const App = () => {
+  useRefreshToken();
+
   return (
     <div className="min-h-screen">
       <Routes>

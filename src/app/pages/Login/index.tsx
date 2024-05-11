@@ -7,6 +7,7 @@ import AuthContainer from "../../components/Containers/AuthContainer";
 import useLogin from "../../hooks/useLogin";
 import toast from "react-hot-toast";
 import Loader from "../../components/Loader/Loader";
+import { useAuthContext } from "../../../contexts/AuthContext";
 
 const initialState: LoginUser = {
   email: "",
@@ -17,6 +18,7 @@ export const Login = () => {
   const [formState, setFormState] = useState<LoginUser>(initialState);
   const { loading, login } = useLogin();
   const navigate = useNavigate();
+  const { authMessage } = useAuthContext();
 
   const validateForm = () => {
     if (!formState.email) {
@@ -55,6 +57,12 @@ export const Login = () => {
         <h1 className="text-3xl font-semibold text-center text-gray-300">
           Iniciar sesion<span className="text-yellow-400"> DnD</span>
         </h1>
+
+        {authMessage && (
+          <p className="text-center text-red-700 font-bold p-2">
+            {authMessage}
+          </p>
+        )}
 
         <form onSubmit={handleSubmit}>
           <label className="label p-2">

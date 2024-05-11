@@ -15,5 +15,6 @@ export type AuthUser = {
   email: string;
   profilePicture: string;
   rol: string;
-  token: string;
+  accessToken: string;
+  refreshToken: string;
 };
