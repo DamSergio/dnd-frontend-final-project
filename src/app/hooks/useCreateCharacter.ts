@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Character } from "../../types/Character";
+import { NewCharacter } from "../../types/Character";
 import { AxiosError } from "axios";
 import { FetchError } from "../../types/FetchError";
 import axios from "../../utils/axios";
@@ -12,7 +12,7 @@ const useCreateCharacter = () => {
   const [fetchError, setFetchError] = useState<string | null>(null);
   const { accessToken } = useAuthContext();
 
-  const createCharacter = async (character: Character) => {
+  const createCharacter = async (character: NewCharacter) => {
     setLoading(true);
 
     try {
@@ -62,6 +62,8 @@ const useCreateCharacter = () => {
         .message;
       setFetchError(error_message);
     }
+
+    setLoading(false);
   };
 
   return { loading, success, fetchError, createCharacter };

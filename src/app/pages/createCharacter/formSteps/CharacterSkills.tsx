@@ -51,10 +51,10 @@ const CharacterSkills = () => {
 
   return (
     <form
-      className="flex-1 flex flex-col justify-center items-center w-full lg:w-2/3 h-full"
+      className="flex-1 flex flex-col justify-center items-center w-full lg:w-2/3"
       onSubmit={saveChanges}
     >
-      <div className="w-2/3 h-full flex-1">
+      <div className="w-2/3 flex-1">
         <h1 className="text-3xl text-yellow-500 font-bold">Habilidades</h1>
         <h2 className="text-lg text-white font-bold mb-4">
           Puedes escoger {2 - skills.length} habilidades

@@ -26,7 +26,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="drawer static top-0">
+    <header className="drawer fixed top-0 z-40" id="header">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
@@ -58,7 +58,7 @@ const Header = () => {
           <AvatarDropDown />
         </div>
       </div>
-      <div className="drawer-side z-10">
+      <div className="drawer-side z-50">
         <label
           htmlFor="my-drawer-3"
           aria-label="close sidebar"

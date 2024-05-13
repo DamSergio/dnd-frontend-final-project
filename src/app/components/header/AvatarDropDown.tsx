@@ -1,18 +1,23 @@
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { LogoutIcon, ProfileIcon, SettingsIcon } from "../Icons/Icons";
 
 const AvatarDropDown = () => {
-  const { profilePicture, username, setAuthUser } = useAuthContext();
+  const { authUser, setAuthUser } = useAuthContext();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     setAuthUser({
+      id: "",
       username: "",
       email: "",
       profilePicture: "",
       rol: "",
-      token: "",
+      accessToken: "",
     });
     localStorage.removeItem("authUser");
+
+    navigate("/");
   };
 
   return (
@@ -24,7 +29,7 @@ const AvatarDropDown = () => {
           className="btn btn-ghost btn-circle avatar"
         >
           <div className="w-10 rounded-full">
-            <img alt={username} src={profilePicture} />
+            <img alt={authUser.username} src={authUser.profilePicture} />
           </div>
         </div>
         <ul

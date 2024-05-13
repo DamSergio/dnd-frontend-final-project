@@ -25,10 +25,10 @@ const CharacterInformation = () => {
 
   return (
     <form
-      className="flex-1 flex flex-col justify-center items-center w-full lg:w-2/3 h-full"
+      className="flex-1 flex flex-col justify-center items-center w-full lg:w-2/3"
       onSubmit={handleSubmit(saveChanges)}
     >
-      <div className="w-2/3 h-full flex-1">
+      <div className="w-2/3 flex-1">
         <h1 className="text-3xl text-yellow-500 font-bold">
           Informacion del Personaje
         </h1>
@@ -64,8 +64,8 @@ const CharacterInformation = () => {
           defaultValue={form.characterInformation.values.gender || ""}
           {...register("gender")}
         >
-          <option value="Masculino">Hombre</option>
-          <option value="Femenino">Mujer</option>
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
         </select>
 
         <label className="label p-2">

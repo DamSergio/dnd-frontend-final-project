@@ -1,33 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 import { AuthUser } from "../types/User";
 
-const AuthContext = createContext({
+export const ClearUser: AuthUser = {
   username: "",
   email: "",
   profilePicture: "",
   rol: "",
   accessToken: "",
-  refreshToken: "",
+};
+
+const AuthContext = createContext({
   authMessage: "",
   setAuthMessage: (authMessage: string) => {},
-  setAuthUser: (authUser: AuthUser | null) => {},
+  authUser: ClearUser,
+  setAuthUser: (
+    authUser: AuthUser | ((prevUser: AuthUser) => AuthUser | null)
+  ) => {},
 });
 
 // Hook
 export const useAuthContext = () => {
   return useContext(AuthContext);
-};
-
-export const ClearUser = {
-  username: "",
-  email: "",
-  profilePicture: "",
-  rol: "",
-  accessToken: "",
-  refreshToken: "",
 };
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
@@ -36,17 +38,16 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   );
   const [authMessage, setAuthMessage] = useState("");
 
+  useEffect(() => {
+    if (authUser) localStorage.setItem("authUser", JSON.stringify(authUser));
+  }, [authUser]);
+
   return (
     <AuthContext.Provider
       value={{
-        username: authUser.username,
-        email: authUser.email,
-        profilePicture: authUser.profilePicture,
-        rol: authUser.rol,
-        accessToken: authUser.accessToken,
-        refreshToken: authUser.refreshToken,
         authMessage: authMessage,
         setAuthMessage: setAuthMessage,
+        authUser,
         setAuthUser,
       }}
     >

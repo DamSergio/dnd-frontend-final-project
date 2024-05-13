@@ -7,7 +7,7 @@ import { Background, Backgrounds } from "../../../data/backgrounds";
 import { Race, Races } from "../../../data/races";
 import { Class, Classes } from "../../../data/classes";
 import { SubRace } from "../../../data/subRaces";
-import { Character } from "../../../../types/Character";
+import { NewCharacter } from "../../../../types/Character";
 import { Trait } from "../../../data/traits";
 import { Skill } from "../../../data/skills";
 import useCreateCharacter from "../../../hooks/useCreateCharacter";
@@ -69,7 +69,7 @@ const CharacterConfirm = () => {
     background?.proficiencies.skills?.forEach((skill) => skills.push(skill));
     form.skills.forEach((skill) => skills.push(skill));
 
-    const newCharacter: Character = {
+    const newCharacter: NewCharacter = {
       name: form.generalInformation.values.name,
       age: form.characterInformation.values.age,
       gender: form.characterInformation.values.gender,
@@ -126,8 +126,8 @@ const CharacterConfirm = () => {
   return (
     <>
       {loading && <Loader />}
-      <div className="flex-1 flex flex-col justify-center items-center w-full lg:w-2/3 h-full">
-        <div className="w-2/3 h-full flex-1">
+      <div className="flex-1 flex flex-col justify-center items-center w-full lg:w-2/3">
+        <div className="w-2/3 flex-1">
           <h1 className="text-3xl text-yellow-500 font-bold mb-4">
             Confirmar los datos del Personaje
           </h1>

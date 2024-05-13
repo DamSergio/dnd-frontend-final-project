@@ -11,10 +11,10 @@ export type LoginUser = {
 };
 
 export type AuthUser = {
+  id: string;
   username: string;
   email: string;
   profilePicture: string;
   rol: string;
   accessToken: string;
-  refreshToken: string;
 };

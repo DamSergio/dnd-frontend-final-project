@@ -5,7 +5,7 @@ const CreateCharacterHeader = () => {
 
   return (
     <>
-      <div className="overflow-x-auto w-full flex justify-center items-center">
+      <div className="overflow-x-auto w-full flex justify-center items-center min-h-16">
         <ul className="steps">
           <li className={`step ${form.step >= 0 ? "step-warning" : ""}`} />
           <li className={`step ${form.step >= 1 ? "step-warning" : ""}`} />

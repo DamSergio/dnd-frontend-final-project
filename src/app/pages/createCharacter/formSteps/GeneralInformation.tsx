@@ -83,10 +83,10 @@ const GeneralInformation = () => {
 
   return (
     <form
-      className="flex-1 flex flex-col justify-center items-center w-full lg:w-2/3 h-full"
+      className="flex-1 flex flex-col justify-center items-center w-full lg:w-2/3"
       onSubmit={handleSubmit(saveChanges)}
     >
-      <div className="w-2/3 h-full flex-1">
+      <div className="w-2/3 flex-1">
         <h1 className="text-3xl text-yellow-500 font-bold">
           Informacion General
         </h1>

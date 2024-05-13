@@ -13,35 +13,64 @@ import Header from "./components/Header/Header";
 import { Characters } from "./pages/Characters/Loadeable";
 import { CreateCharacter } from "./pages/CreateCharacter/Loadeable";
 import useRefreshToken from "./hooks/useRefreshToken";
-import ToastSessionExpired from "./components/CustomToasts/ToastSessionExpired";
+import { CharacterPage } from "./pages/CharacterPage";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
-  const { accessToken } = useAuthContext();
+  const { authUser } = useAuthContext();
+  const headerH = document.getElementById("header")?.offsetHeight;
+  const divH = `calc(100vh - ${headerH}px)`;
 
-  return accessToken ? (
-    <div className="w-full min-h-screen flex flex-col items-center justify-between">
+  return authUser.accessToken ? (
+    <>
       <Header />
-      <main className="w-full flex-1 flex flex-col justify-center p-4 z-0">
-        {children}
-      </main>
-      {/* <Footer /> */}
-    </div>
+      <div
+        className="w-full max-h-screen flex flex-col items-center"
+        style={{ height: divH, marginTop: `${headerH}px` }}
+      >
+        <main className="w-full h-full max-h-full flex flex-col justify-center p-4 z-0 overflow-y-auto">
+          {children}
+        </main>
+      </div>
+    </>
   ) : (
     <Navigate to="/login" />
   );
 };
 
 const UnProtectedRoute = ({ children }: { children: ReactNode }) => {
-  const { accessToken } = useAuthContext();
+  const { authUser } = useAuthContext();
 
-  return accessToken ? <Navigate to="/" /> : children;
+  return authUser.accessToken ? <Navigate to="/" /> : children;
+};
+
+const PublicRoute = ({ children }: { children: ReactNode }) => {
+  const { authUser } = useAuthContext();
+  const headerH = document.getElementById("header")?.offsetHeight;
+  const divH = `calc(100vh - ${headerH}px)`;
+
+  return (
+    <>
+      {authUser.accessToken && <Header />}
+      <div
+        className="w-full max-h-screen flex flex-col items-center"
+        style={{
+          height: authUser.accessToken ? divH : "100vh",
+          marginTop: authUser.accessToken ? `${headerH}px` : "",
+        }}
+      >
+        <main className="w-full h-full max-h-full flex flex-col justify-center p-4 z-0 overflow-y-auto">
+          {children}
+        </main>
+      </div>
+    </>
+  );
 };
 
 const App = () => {
   useRefreshToken();
 
   return (
-    <div className="min-h-screen">
+    <div className="max-h-screen">
       <Routes>
         {/* Auth routes */}
         <Route
@@ -102,6 +131,15 @@ const App = () => {
             <ProtectedRoute>
               <CreateCharacter />
             </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/character/:id"
+          element={
+            <PublicRoute>
+              <CharacterPage />
+            </PublicRoute>
           }
         />
 
