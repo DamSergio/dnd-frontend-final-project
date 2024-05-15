@@ -12,6 +12,7 @@ import CharacterClass from "./formSteps/CharacterClass";
 import CharacterStats from "./formSteps/CharacterStats";
 import CharacterConfirm from "./formSteps/CharacterConfirm";
 import CharacterSkills from "./formSteps/CharacterSkills";
+import { Helmet } from "react-helmet";
 
 const STEPS = [
   <GeneralInformation />,
@@ -28,6 +29,9 @@ export const CreateCharacter = () => {
 
   return (
     <MainContainer>
+      <Helmet>
+        <title>Crear personaje</title>
+      </Helmet>
       <FormStateContext.Provider
         value={{
           form,

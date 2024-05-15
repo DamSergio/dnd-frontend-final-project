@@ -8,6 +8,7 @@ import useLogin from "../../hooks/useLogin";
 import toast from "react-hot-toast";
 import Loader from "../../components/Loader/Loader";
 import { useAuthContext } from "../../../contexts/AuthContext";
+import { Helmet } from "react-helmet";
 
 const initialState: LoginUser = {
   email: "",
@@ -53,6 +54,9 @@ export const Login = () => {
   return (
     <>
       {loading && <Loader />}
+      <Helmet>
+        <title>Iniciar sesion</title>
+      </Helmet>
       <AuthContainer>
         <h1 className="text-3xl font-semibold text-center text-gray-300">
           Iniciar sesion<span className="text-yellow-400"> DnD</span>

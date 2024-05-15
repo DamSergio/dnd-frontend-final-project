@@ -24,6 +24,8 @@ export type NewCharacter = {
   };
 
   hitPoints: number;
+  hitPointsBase: number;
+  hitPointsPerLevel: number;
   armorClass: number;
   speed: number;
   savingThrows: string[];
@@ -58,6 +60,7 @@ export type Character = {
   name: string;
   age: number;
   gender: string;
+  picture: string;
 
   background: string;
   alignment: string;
@@ -81,6 +84,8 @@ export type Character = {
 
   level: number;
   hit_points: number;
+  hit_points_base: number;
+  hit_points_per_level: number;
   armor_class: number;
   speed: number;
   saving_throws: string[];
@@ -115,4 +120,59 @@ export type Character = {
 
   id: string;
   user: string;
+};
+
+export const defaultCharacter: Character = {
+  name: "",
+  age: 0,
+  gender: "",
+  picture: "",
+  background: "",
+  alignment: "",
+  personality_traits: "",
+  ideals: "",
+  bonds: "",
+  flaws: "",
+  history: "",
+  character_race: {
+    name: "",
+    icon: "",
+  },
+  character_class: {
+    name: "",
+    icon: "",
+  },
+  level: 0,
+  hit_points: 0,
+  hit_points_base: 0,
+  hit_points_per_level: 0,
+  armor_class: 0,
+  speed: 0,
+  saving_throws: [],
+  armor_proficiencies: [],
+  weapon_proficiencies: [],
+  tool_proficiencies: [],
+  stats: {
+    str: 0,
+    dex: 0,
+    con: 0,
+    int: 0,
+    wis: 0,
+    cha: 0,
+  },
+  coins: {
+    cp: 0,
+    sp: 0,
+    ep: 0,
+    gp: 0,
+    pp: 0,
+  },
+  skills: [],
+  traits: [],
+  items: [],
+  languages: [],
+  abilities: [],
+  spells: [],
+  id: "",
+  user: "",
 };

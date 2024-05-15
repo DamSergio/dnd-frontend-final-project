@@ -3,21 +3,21 @@ import { useState } from "react";
 import { NewCharacter } from "../../types/Character";
 import { AxiosError } from "axios";
 import { FetchError } from "../../types/FetchError";
-import axios from "../../utils/axios";
+import api from "../../utils/axios";
 import { useAuthContext } from "../../contexts/AuthContext";
 
 const useCreateCharacter = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<string | null>(null);
   const [fetchError, setFetchError] = useState<string | null>(null);
-  const { accessToken } = useAuthContext();
+  const { authUser } = useAuthContext();
 
   const createCharacter = async (character: NewCharacter) => {
     setLoading(true);
 
     try {
       console.log(character);
-      const response = await axios.post(
+      const response = await api.post(
         "/character/create",
         {
           name: character.name,
@@ -37,6 +37,8 @@ const useCreateCharacter = () => {
           character_class: character.cls,
 
           hit_points: character.hitPoints,
+          hit_points_base: character.hitPointsBase,
+          hit_points_per_level: character.hitPointsPerLevel,
           armor_class: character.armorClass,
           speed: character.speed,
           saving_throws: character.savingThrows,
@@ -52,7 +54,7 @@ const useCreateCharacter = () => {
           items: character.items,
           languages: character.languages,
         },
-        { headers: { Authorization: `Bearer ${accessToken}` } }
+        { headers: { Authorization: `Bearer ${authUser.accessToken}` } }
       );
 
       const data = await response.data;

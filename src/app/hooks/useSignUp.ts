@@ -1,6 +1,6 @@
 import React from "react";
 
-import axios from "../../utils/axios";
+import api from "../../utils/axios";
 import { AxiosError } from "axios";
 import { SignUpUser } from "../../types/User";
 import { FetchError } from "../../types/FetchError";
@@ -13,7 +13,7 @@ const useSignUp = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("/auth/register", {
+      const response = await api.post("/auth/register", {
         username: user.username,
         email: user.email,
         password: user.password,

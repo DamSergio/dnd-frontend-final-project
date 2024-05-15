@@ -7,6 +7,7 @@ import useSignUp from "../../hooks/useSignUp";
 import { SignUpUser } from "../../../types/User";
 import AuthContainer from "../../components/Containers/AuthContainer";
 import Loader from "../../components/Loader/Loader";
+import { Helmet } from "react-helmet";
 
 const initialState: SignUpUser = {
   username: "",
@@ -82,6 +83,9 @@ export const SignUp = () => {
   return (
     <>
       {loading && <Loader />}
+      <Helmet>
+        <title>Registro</title>
+      </Helmet>
       <AuthContainer>
         <h1 className="text-3xl font-semibold text-center text-gray-300">
           Resgristro<span className="text-yellow-400"> DnD</span>

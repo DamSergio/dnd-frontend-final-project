@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
 
 import MainContainer from "../../components/Containers/MainContainer";
-import { Character } from "../../../types/Character";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPenToSquare,
@@ -16,30 +16,43 @@ import CharacterSpells from "./tabs/CharacterSpells";
 import useFetchCharacter from "../../hooks/useFetchCharacter";
 import Loader from "../../components/Loader/Loader";
 import { useAuthContext } from "../../../contexts/AuthContext";
-
+import CharacterEdit from "./tabs/CharacterEdit";
+import { Helmet } from "react-helmet";
 export const CharacterPage = () => {
+  const { id } = useParams() as { id: string };
   const [searchParams, setSearchParams] = useSearchParams();
   const tab = searchParams.get("tab");
-  const { id } = useParams() as { id: string };
   const { character, loading, fetchError } = useFetchCharacter(id);
   const { authUser } = useAuthContext();
-  console.log(character);
 
   useEffect(() => {
-    if (tab !== "info" && tab !== "items" && tab !== "spells")
+    if (tab !== "info" && tab !== "items" && tab !== "spells" && tab !== "edit")
+      setSearchParams({ tab: "info" });
+
+    if (tab === "edit" && character.user !== authUser.id)
       setSearchParams({ tab: "info" });
   }, [tab, setSearchParams]);
 
   return (
     <>
       {loading && <Loader />}
+      <Helmet>
+        <title>{character.name}</title>
+      </Helmet>
       <MainContainer>
-        {!fetchError && tab === "info" && (
+        {!fetchError && !loading && tab === "info" && (
           <CharacterInformation character={character} />
         )}
-        {!fetchError && tab === "items" && <CharacterItems />}
-        {!fetchError && tab === "spells" && <CharacterSpells />}
-        {fetchError && (
+        {!fetchError && !loading && tab === "items" && (
+          <CharacterItems character={character} />
+        )}
+        {!fetchError && !loading && tab === "spells" && (
+          <CharacterSpells character={character} />
+        )}
+        {!fetchError && !loading && tab === "edit" && (
+          <CharacterEdit character={character} />
+        )}
+        {fetchError && !loading && (
           <div className="flex flex-col h-full w-full lg:w-2/4 justify-center items-center overflow-y-auto">
             {fetchError}
           </div>
@@ -66,8 +79,8 @@ export const CharacterPage = () => {
           </button>
           {authUser.id === character.user && (
             <button
-              onClick={() => setSearchParams({ tab: "spells" })}
-              className={`rounded-b-md ${tab === "spells" ? "active" : ""}`}
+              onClick={() => setSearchParams({ tab: "edit" })}
+              className={`rounded-b-md ${tab === "edit" ? "active" : ""}`}
             >
               <FontAwesomeIcon icon={faPenToSquare} />
             </button>

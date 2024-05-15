@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import AuthContainer from "../../components/Containers/AuthContainer";
+import { Helmet } from "react-helmet";
 
 const maskEmail = (email: string) => {
   if (!email) return "";
@@ -18,6 +19,9 @@ export const EmailSent = () => {
 
   return (
     <AuthContainer>
+      <Helmet>
+        <title>Verificacion de email</title>
+      </Helmet>
       <h1 className="text-3xl font-semibold text-center text-gray-300">
         Verificacion de email
       </h1>

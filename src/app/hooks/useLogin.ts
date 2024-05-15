@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { LoginUser } from "../../types/User";
 import { FetchError } from "../../types/FetchError";
-import axios from "../../utils/axios";
+import api from "../../utils/axios";
 import { AxiosError } from "axios";
 import { useAuthContext } from "../../contexts/AuthContext";
 
@@ -15,7 +15,7 @@ const useLogin = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("/auth/login", {
+      const response = await api.post("/auth/login", {
         email: loginUser.email,
         password: loginUser.password,
       });

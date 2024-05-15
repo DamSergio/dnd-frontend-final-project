@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useVerifyEmail from "../../hooks/useVerifyEmail";
 import { useEffect } from "react";
 import AuthContainer from "../../components/Containers/AuthContainer";
+import { Helmet } from "react-helmet";
 
 export const EmailVerified = () => {
   const { token } = useParams() as { token: string };
@@ -14,6 +15,9 @@ export const EmailVerified = () => {
 
   return (
     <AuthContainer>
+      <Helmet>
+        <title>Email verificado</title>
+      </Helmet>
       {loading && (
         <>
           <p className="text-base label-text">Verificando email...</p>

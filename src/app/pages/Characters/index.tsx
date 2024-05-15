@@ -7,6 +7,7 @@ import useGetCharacters from "../../hooks/useGetCharacters";
 import Loader from "../../components/Loader/Loader";
 import CharacterCard from "../../components/Card/CharacterCard";
 import { useSearchParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export const Characters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,6 +17,9 @@ export const Characters = () => {
   return (
     <>
       {loading && <Loader />}
+      <Helmet>
+        <title>Personajes</title>
+      </Helmet>
       <MainContainer>
         <div className="flex flex-col w-full justify-center">
           <h1 className="text-1xl lg:text-3xl font-semibold text-center text-gray-300">

@@ -95,6 +95,8 @@ const CharacterConfirm = () => {
       },
 
       hitPoints: cls?.hitPoints || 0,
+      hitPointsBase: cls?.hitPoints || 0,
+      hitPointsPerLevel: cls?.hitPointsPerLevel || 0,
       armorClass: 0,
       speed: subRace?.speed || race?.speed || 30,
       savingThrows: cls?.savingThrows || [],

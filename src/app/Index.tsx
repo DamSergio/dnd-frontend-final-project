@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import { SignUp } from "./pages/SignUp/Loadeable";
@@ -58,6 +58,11 @@ const PublicRoute = ({ children }: { children: ReactNode }) => {
           marginTop: authUser.accessToken ? `${headerH}px` : "",
         }}
       >
+        {!authUser.accessToken && (
+          <Link to="/">
+            <button className="btn mt-2">Login</button>
+          </Link>
+        )}
         <main className="w-full h-full max-h-full flex flex-col justify-center p-4 z-0 overflow-y-auto">
           {children}
         </main>

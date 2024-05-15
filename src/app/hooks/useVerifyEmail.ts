@@ -1,5 +1,6 @@
 import { useState } from "react";
-import axios from "../../utils/axios";
+
+import api from "../../utils/axios";
 import { AxiosError } from "axios";
 
 type FetchError = {
@@ -15,7 +16,7 @@ const useVerifyEmail = () => {
     setLoading(true);
 
     try {
-      await axios.get(`/auth/verify/${token}`);
+      await api.get(`/auth/verify/${token}`);
     } catch (error: AxiosError | unknown) {
       const error_message: FetchError | unknown = (error as AxiosError).response
         ?.data;

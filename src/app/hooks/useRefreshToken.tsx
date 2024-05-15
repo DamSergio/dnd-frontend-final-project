@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 
 import { ClearUser, useAuthContext } from "../../contexts/AuthContext";
-import axios from "../../utils/axios";
+import api from "../../utils/axios";
 import toast from "react-hot-toast";
 import ToastSessionExpired from "../components/CustomToasts/ToastSessionExpired";
 
@@ -17,7 +17,7 @@ const useRefreshToken = () => {
       if (!accessToken) return;
 
       try {
-        const response = await axios.get("/auth/refresh", {
+        const response = await api.get("/auth/refresh", {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
 
