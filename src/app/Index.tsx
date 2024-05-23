@@ -17,6 +17,7 @@ import { CharacterPage } from "./pages/CharacterPage/Loadeable";
 import { Campaigns } from "./pages/Campaigns/Loadeable";
 import { CreateCampaign } from "./pages/CreateCampaign/Loadeable";
 import { CampaignPage } from "./pages/CampaignPage/Loadeable";
+import { Profile } from "./pages/Profile/Loadeable";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { authUser } = useAuthContext();
@@ -124,6 +125,15 @@ const App = () => {
           }
         />
 
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
         {/* Character routes */}
         <Route
           path="/characters"
@@ -178,8 +188,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-
-        {/* TODO: Admin routes */}
 
         {/* Route not found */}
         <Route path="*" element={<span>Not found</span>} />

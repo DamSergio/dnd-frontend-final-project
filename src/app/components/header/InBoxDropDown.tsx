@@ -22,7 +22,11 @@ const InBoxDropDown = () => {
       >
         <FontAwesomeIcon icon={faEnvelope} />
         <span className="hidden md:flex">Invitaciones</span>
-        <span className="badge badge-sm">{authUser.invitations.length}</span>
+        <span className="badge badge-sm">
+          {authUser.invitations.length < 100
+            ? authUser.invitations.length
+            : "+99"}
+        </span>
       </div>
       {authUser.invitations.length > 0 && (
         <ul

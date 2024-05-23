@@ -17,6 +17,9 @@ import {
   useCampaignContext,
 } from "./components/CampaignContext";
 import CampaignNotes from "./tabs/CampaignNotes";
+import useListenCharacters from "../../hooks/useListenCharacters";
+import CampaignRolls from "./tabs/CampaignRolls";
+import useListenRolls from "../../hooks/useListenRolls";
 
 export const CampaignPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,6 +30,8 @@ export const CampaignPage = () => {
   const isDM = campaign?.dungeon_master === authUser.email;
 
   const [campaignState, setCampaign] = useState<Campaign>(campaign);
+  useListenCharacters(campaignState, setCampaign);
+  useListenRolls(campaignState, setCampaign);
 
   useEffect(() => {
     if (tab !== "characters" && tab !== "rolls" && tab !== "notes")
@@ -56,7 +61,7 @@ export const CampaignPage = () => {
         {!fetchError && !loading && tab === "characters" && (
           <CampaignCharacters />
         )}
-        {/* Rolls */}
+        {!fetchError && !loading && tab === "rolls" && <CampaignRolls />}
         {!fetchError && !loading && tab === "notes" && <CampaignNotes />}
 
         <div className="btm-nav lg:w-2/4 static rounded-b-md">

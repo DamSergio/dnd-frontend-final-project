@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../contexts/AuthContext";
-import { LogoutIcon, ProfileIcon, SettingsIcon } from "../Icons/Icons";
+import { LogoutIcon, ProfileIcon } from "../Icons/Icons";
 
 const AvatarDropDown = () => {
   const { authUser, setAuthUser } = useAuthContext();
@@ -14,6 +14,7 @@ const AvatarDropDown = () => {
       profilePicture: "",
       rol: "",
       accessToken: "",
+      invitations: [],
     });
     localStorage.removeItem("authUser");
 
@@ -37,16 +38,10 @@ const AvatarDropDown = () => {
           className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
-            <a>
+            <Link to={"/profile"}>
               <ProfileIcon />
               Profile
-            </a>
-          </li>
-          <li>
-            <a>
-              <SettingsIcon />
-              Settings
-            </a>
+            </Link>
           </li>
           <li>
             <button onClick={handleLogout}>

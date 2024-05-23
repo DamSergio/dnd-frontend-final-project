@@ -48,7 +48,7 @@ export const Login = () => {
       return toast.error(fetchError);
     }
 
-    navigate("/", { replace: true });
+    navigate("/characters", { replace: true });
   };
 
   return (

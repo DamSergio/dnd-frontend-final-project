@@ -1053,14 +1053,14 @@ const CharacterEdit = ({ character }: { character: Character }) => {
             <form method="dialog" className="flex gap-1">
               {/* if there is a button in form, it will close the modal */}
               <button
-                className="btn btn-error w-20"
+                className="btn btn-info w-20"
                 onClick={() =>
                   deleteCharacter(character.id, authUser.accessToken)
                 }
               >
                 Si
               </button>
-              <button className="btn btn-info w-20">No</button>
+              <button className="btn btn-error w-20">No</button>
             </form>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { Character } from "./Character";
+import { Roll } from "./Roll";
 
 export type CreateCampaign = {
   name: string;
@@ -12,7 +13,8 @@ export type Campaign = {
   description: string;
   notes: string;
   dungeon_master: string;
-  players?: Character[];
+  players: Character[];
+  rolls: Roll[];
 };
 
 export const DefaultCampaign: Campaign = {
@@ -21,4 +23,6 @@ export const DefaultCampaign: Campaign = {
   description: "",
   notes: "",
   dungeon_master: "",
+  players: [],
+  rolls: [],
 };
