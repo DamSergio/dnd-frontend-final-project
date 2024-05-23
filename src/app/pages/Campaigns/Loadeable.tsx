@@ -1,6 +1,6 @@
 import { lazyLoad } from "../../../utils/loadeable";
 
-export const CharacterPage = lazyLoad(
+export const Campaigns = lazyLoad(
   () => import("./index"),
-  (module) => module.CharacterPage
+  (module) => module.Campaigns
 );

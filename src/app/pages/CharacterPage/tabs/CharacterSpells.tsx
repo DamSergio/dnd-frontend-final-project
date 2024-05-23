@@ -41,18 +41,22 @@ const CharacterSpells = ({ character }: { character: Character }) => {
       <div className="divider" />
       <h1 className="text-2xl">Trucos</h1>
       <div className="divider" />
-      <ul>
+      <ul className="flex flex-col gap-1">
         {character.abilities.map((abilitie, index) => (
-          <li key={index}>{abilitie}</li>
+          <li key={index} className="p-4 bg-base-100 rounded-lg">
+            {abilitie}
+          </li>
         ))}
         {character.abilities.length === 0 && <p>Ninuno todavia</p>}
       </ul>
       <div className="divider" />
       <h1 className="text-2xl">Hechizos</h1>
       <div className="divider" />
-      <ul>
+      <ul className="flex flex-col gap-1">
         {character.spells.map((spell, index) => (
-          <li key={index}>{spell}</li>
+          <li key={index} className="p-4 bg-base-100 rounded-lg">
+            {spell}
+          </li>
         ))}
         {character.spells.length === 0 && <p>Ninuno todavia</p>}
       </ul>

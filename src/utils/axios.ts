@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: import.meta.env.VITE_BASE_API_URL || "http://localhost:3001",
+  baseURL: import.meta.env.VITE_BASE_API_URL,
 });

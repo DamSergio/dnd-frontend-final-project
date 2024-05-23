@@ -13,7 +13,10 @@ import Header from "./components/Header/Header";
 import { Characters } from "./pages/Characters/Loadeable";
 import { CreateCharacter } from "./pages/CreateCharacter/Loadeable";
 import useRefreshToken from "./hooks/useRefreshToken";
-import { CharacterPage } from "./pages/CharacterPage";
+import { CharacterPage } from "./pages/CharacterPage/Loadeable";
+import { Campaigns } from "./pages/Campaigns/Loadeable";
+import { CreateCampaign } from "./pages/CreateCampaign/Loadeable";
+import { CampaignPage } from "./pages/CampaignPage/Loadeable";
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { authUser } = useAuthContext();
@@ -121,6 +124,7 @@ const App = () => {
           }
         />
 
+        {/* Character routes */}
         <Route
           path="/characters"
           element={
@@ -145,6 +149,33 @@ const App = () => {
             <PublicRoute>
               <CharacterPage />
             </PublicRoute>
+          }
+        />
+        {/* Campaign routes */}
+        <Route
+          path="/campaigns"
+          element={
+            <ProtectedRoute>
+              <Campaigns />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/createCampaign"
+          element={
+            <ProtectedRoute>
+              <CreateCampaign />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/campaign/:id"
+          element={
+            <ProtectedRoute>
+              <CampaignPage />
+            </ProtectedRoute>
           }
         />
 

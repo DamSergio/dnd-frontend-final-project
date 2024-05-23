@@ -18,6 +18,7 @@ import Loader from "../../components/Loader/Loader";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import CharacterEdit from "./tabs/CharacterEdit";
 import { Helmet } from "react-helmet";
+
 export const CharacterPage = () => {
   const { id } = useParams() as { id: string };
   const [searchParams, setSearchParams] = useSearchParams();
@@ -29,7 +30,11 @@ export const CharacterPage = () => {
     if (tab !== "info" && tab !== "items" && tab !== "spells" && tab !== "edit")
       setSearchParams({ tab: "info" });
 
-    if (tab === "edit" && character.user !== authUser.id)
+    if (
+      tab === "edit" &&
+      character.user !== authUser.id &&
+      authUser.rol !== "admin"
+    )
       setSearchParams({ tab: "info" });
   }, [tab, setSearchParams]);
 
@@ -77,7 +82,7 @@ export const CharacterPage = () => {
           >
             <FontAwesomeIcon icon={faWandMagic} />
           </button>
-          {authUser.id === character.user && (
+          {(authUser.id === character.user || authUser.rol === "admin") && (
             <button
               onClick={() => setSearchParams({ tab: "edit" })}
               className={`rounded-b-md ${tab === "edit" ? "active" : ""}`}

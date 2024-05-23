@@ -1,6 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { DrawerIcon } from "../Icons/Icons";
 import AvatarDropDown from "./AvatarDropDown";
+import DiceDropDown from "./DiceDropDown";
+import InBoxDropDown from "./InBoxDropDown";
 
 const Header = () => {
   const location = useLocation();
@@ -55,6 +57,8 @@ const Header = () => {
               </ul>
             </div>
           </div>
+          <DiceDropDown />
+          <InBoxDropDown />
           <AvatarDropDown />
         </div>
       </div>

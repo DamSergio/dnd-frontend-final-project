@@ -11,8 +11,8 @@ const CharacterCard = ({ character }: { character: Character }) => {
         </div>
         <div className="flex-1 flex justify-center items-center">
           <img
-            src={character.character_class.icon}
-            alt="class icon"
+            src={character.picture}
+            alt="Character icon"
             className="h-[250px] w-[250px]"
           />
         </div>

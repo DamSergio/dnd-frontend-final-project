@@ -129,7 +129,7 @@ const CharacterConfirm = () => {
     <>
       {loading && <Loader />}
       <div className="flex-1 flex flex-col justify-center items-center w-full lg:w-2/3">
-        <div className="w-2/3 flex-1">
+        <div className="w-full md:w-2/3 flex-1">
           <h1 className="text-3xl text-yellow-500 font-bold mb-4">
             Confirmar los datos del Personaje
           </h1>

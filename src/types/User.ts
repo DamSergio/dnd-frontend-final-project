@@ -1,3 +1,5 @@
+import { Invitation } from "./Invitation";
+
 export type SignUpUser = {
   username: string;
   email: string;
@@ -17,4 +19,5 @@ export type AuthUser = {
   profilePicture: string;
   rol: string;
   accessToken: string;
+  invitations: Invitation[];
 };
