@@ -88,7 +88,7 @@ export const SignUp = () => {
       </Helmet>
       <AuthContainer>
         <h1 className="text-3xl font-semibold text-center text-gray-300">
-          Resgristro<span className="text-yellow-400"> DnD</span>
+          Resgristro<span className="text-yellow-400"> DnD portable</span>
         </h1>
 
         <form onSubmit={handleSubmit}>

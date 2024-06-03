@@ -42,7 +42,10 @@ const Header = () => {
             </label>
           </div>
           <div className="navbar-start flex-1 px-2 mx-2 w-auto">
-            <Link to="/" className="btn btn-ghost text-xl text-yellow-400">
+            <Link
+              to="/characters"
+              className="btn btn-ghost text-xl text-yellow-400"
+            >
               DnD
             </Link>
           </div>

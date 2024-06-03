@@ -13,7 +13,7 @@ const useLogin = () => {
   const login = async (loginUser: LoginUser) => {
     let fetchError: string | null = null;
     setLoading(true);
-
+    // console.log("login");
     try {
       const response = await api.post("/auth/login", {
         email: loginUser.email,

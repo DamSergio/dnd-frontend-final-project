@@ -59,7 +59,7 @@ export const Login = () => {
       </Helmet>
       <AuthContainer>
         <h1 className="text-3xl font-semibold text-center text-gray-300">
-          Iniciar sesion<span className="text-yellow-400"> DnD</span>
+          Iniciar sesion<span className="text-yellow-400"> DnD portable</span>
         </h1>
 
         {authMessage && (
