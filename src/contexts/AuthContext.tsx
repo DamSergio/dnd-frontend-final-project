@@ -16,6 +16,8 @@ export const ClearUser: AuthUser = {
   profilePicture: "",
   rol: "",
   accessToken: "",
+  id: "",
+  invitations: [],
 };
 
 const AuthContext = createContext({
